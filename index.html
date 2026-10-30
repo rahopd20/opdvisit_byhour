@@ -109,7 +109,7 @@ bar("cPF",L,[wdB.map(v=>v/Math.max(1,tot(wdB))*100),weB.map(v=>v/Math.max(1,tot(
 const css=getComputedStyle(document.documentElement);C25=css.getPropertyValue("--y25").trim();C26=css.getPropertyValue("--y26").trim();CW=css.getPropertyValue("--wd").trim();CE=css.getPropertyValue("--we").trim();
 Chart.defaults.font.size=11;Chart.defaults.color=css.getPropertyValue("--mut").trim();Chart.defaults.font.family="Figtree,Segoe UI,sans-serif";Chart.defaults.borderColor=css.getPropertyValue("--line").trim();
 const lim=()=>Math.min(LAST[st.ya],LAST[st.yb]);
-const fit=()=>{const L=lim();["fm","to"].forEach(id=>{$(id).options[9].textContent=(st.ya==1||st.yb==1)?"Oct (2026 partial)":"Oct"});["fm","to"].forEach(id=>[...$(id).options].forEach((o,i)=>o.disabled=i>L));if(st.e>L){st.e=L;$("to").value=L}if(st.s>L){st.s=L;$("fm").value=L}};
+const fit=()=>{const L=lim();$("fm").options[9].textContent="Oct";$("to").options[9].textContent=(st.ya==1||st.yb==1)?"Oct (2026 partial)":"Oct";["fm","to"].forEach(id=>[...$(id).options].forEach((o,i)=>o.disabled=i>L));if(st.e>L){st.e=L;$("to").value=L}if(st.s>L){st.s=L;$("fm").value=L}};
 $("to").value=8;fit();
 $("ya").onchange=e=>{st.ya=+e.target.value;fit();render()};$("yb").onchange=e=>{st.yb=+e.target.value;fit();render()};
 $("fm").onchange=e=>{st.s=+e.target.value;if(st.e<st.s){st.e=st.s;$("to").value=st.e}render()};
